@@ -1,0 +1,102 @@
+repos:
+- repo: https://github.com/psf/black
+  rev: 23.7.0
+  hooks:
+  - id: black
+    name: black
+    description: "Black: The uncompromising Python code formatter"
+    entry: black
+    language: python
+    language_version: python3
+    minimum_pre_commit_version: 2.9.2
+    require_serial: true
+    types_or: [python, pyi]
+  - id: black-jupyter
+    name: black-jupyter
+    description:
+      "Black: The uncompromising Python code formatter (with Jupyter Notebook support)"
+    entry: black
+    language: python
+    minimum_pre_commit_version: 2.9.2
+    require_serial: true
+    types_or: [python, pyi, jupyter]
+    additional_dependencies: [".[jupyter]"]
+
+- repo: https://github.com/nbQA-dev/nbQA
+  rev: 1.7.0
+  hooks:
+    - id: nbqa-pyupgrade
+      args: ["--py38-plus"]
+    - id: nbqa-isort
+    - id: nbqa-flake8
+      args: ["--extend-ignore=E402,F811"]
+      exclude: |
+          (?x)^(
+              lessons/landlab/landlab-terrainbento/|
+              lessons/landlab/landlab/create_a_component.ipynb|
+              lessons/landlab/landlab/intro-to-grids.ipynb|
+              lessons/landlab/landlab/landlab-fault-scarp-for-espin.ipynb|
+              lessons/landlab/landlab/practice-your-skills.ipynb|
+              lessons/landlab/landlab/01-intro.ipynb|
+              lessons/landlab/landlab/05-components.ipynb
+          )
+
+- repo: https://github.com/pycqa/flake8
+  rev: 6.1.0
+  hooks:
+  - id: flake8
+    additional_dependencies:
+    - flake8-bugbear
+    - flake8-comprehensions
+    - flake8-simplify
+
+- repo: https://github.com/kynan/nbstripout
+  rev: 0.6.1
+  hooks:
+    - id: nbstripout
+      description: Strip output from jupyter notebooks
+      args: [--drop-empty-cells]
+
+- repo: https://github.com/asottile/pyupgrade
+  rev: v3.10.1
+  hooks:
+  - id: pyupgrade
+    args: [--py38-plus]
+
+- repo: https://github.com/PyCQA/isort
+  rev: 5.12.0
+  hooks:
+  - id: isort
+    files: \.py$
+
+- repo: https://github.com/mcflugen/heartfelt-hooks
+  rev: v0.3.2
+  hooks:
+  - id: file-name-check-whitespace
+  - id: nb-check-kernel
+    args: [
+      --verbose,
+      --fix,
+      --kernel-name=ivy,
+      --kernel-display-name=Ivy,
+      --kernel-language=python
+    ]
+  - id: nb-check-hidden-cells
+    args: [--tags=solution, --solution-suffix=.a.ipynb, --diff]
+  - id: notebook-check-heading-levels
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+    - id: check-builtin-literals
+    - id: check-added-large-files
+    - id: check-case-conflict
+    - id: check-toml
+    - id: check-yaml
+    - id: debug-statements
+    - id: end-of-file-fixer
+    - id: forbid-new-submodules
+    - id: mixed-line-ending
+    - id: trailing-whitespace
+    - id: file-contents-sorter
+      files: requirements.(in|txt)
