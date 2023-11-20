@@ -9,7 +9,7 @@
 [hillslopes]: ./lessons/hillslopes/index.ipynb
 [rivers]: ./lessons/rivers/index.ipynb
 [landlab]: ./lessons/landlab/landlab/00_welcome.ipynb
-[jhub-link]: https://lab.openearthscape.org/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fcsdms%2Fivy&urlpath=lab%2Ftree%2Fivy%2FREADME.ipynb%3Fautodecode&branch=main
+[jhub-link]: https://lab.openearthscape.org/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FBCampforts%2Fevolving_landscapes&urlpath=tree%2Fevolving_landscapes%2F&branch=main
 [jhub-info]: https://csdms.colorado.edu/wiki/JupyterHub
 [swc]: http://software-carpentry.org
 [swc-license]: https://github.com/swcarpentry/python-novice-inflammation/blob/gh-pages/LICENSE.md
@@ -26,6 +26,7 @@ Part of this material is based on the [CSDMS Ivy collection][csdms-ivy] that is 
 [Community Surface Dynamics Modeling System ](https://csdms.colorado.edu)(CSDMS).
 
 ## Lessons
+
 
 1. [Project Jupyter][jupyter]
 1. [Introduction to the Shell][shell]
